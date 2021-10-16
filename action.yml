@@ -1,4 +1,4 @@
-name: 'Deploy to Appwrite'
+name: 'Deploy Appwrite Function'
 description: 'A simple way to deploy your function to Appwrite'
 inputs: 
   endpoint:
@@ -13,18 +13,16 @@ inputs:
     description: 'The command that starts your function'
   code:
     description: 'The directory containing your function'
-    required: false
     default: './'
   locale:
     description: 'Locale'
-    required: false
     default: 'en-US'
 runs:
   using: 'composite'
   steps:
     - name: Install Appwrite CLI
-        shell: bash
-        run: curl -sL https://appwrite.io/cli/install.sh | bash
+      shell: bash
+      run: curl -sL https://appwrite.io/cli/install.sh | bash
     - name: Setup Appwrite CLI
       shell: bash
       run: |
