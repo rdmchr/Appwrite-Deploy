@@ -1,8 +1,5 @@
 name: 'Deploy to Appwrite'
 description: 'A simple way to deploy your function to Appwrite'
-branding:
-  icon: 'terminal'
-  color: 'red'
 inputs: 
   endpoint:
     description: 'Your Appwrite endpoint'
