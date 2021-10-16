@@ -1,0 +1,46 @@
+name: 'Deploy to Appwrite'
+description: 'A simple way to deploy your function to Appwrite'
+branding:
+  icon: 'terminal'
+  color: 'red'
+inputs: 
+  endpoint:
+    description: 'Your Appwrite endpoint'
+  project:
+    description: 'The Appwrite project id'
+  key:
+    description: 'The Appwrite API token'
+  function:
+    description: 'The id of the function you want to deploy'
+  command:
+    description: 'The command that starts your function'
+  code:
+    description: 'The directory containing your function'
+    required: false
+    default: './'
+  locale:
+    description: 'Locale'
+    required: false
+    default: 'en-US'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Appwrite CLI
+        shell: bash
+        run: curl -sL https://appwrite.io/cli/install.sh | bash
+    - name: Setup Appwrite CLI
+      shell: bash
+      run: |
+        appwrite init \
+          --locale='${{ inputs.locale }}' \
+          --endpoint='${{ inputs.endpoint }}' \
+          --project='${{ inputs.project }}' \
+          --key='${{ inputs.key }}'
+        appwrite version
+    - name: Deploy function
+      shell: bash
+      run:  |
+        appwrite functions createTag \
+          --functionId='${{ inputs.function }}' \
+          --command="${{ inputs.command }}" \
+          --code="${{ inputs.code }}"
