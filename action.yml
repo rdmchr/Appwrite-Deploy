@@ -36,4 +36,4 @@ runs:
         appwrite version
     - name: Deploy function
       shell: bash
-      run: bash deploy-function.sh ${{ inputs.single }}
+      run: ${{ github.action_path }}/deploy-function.sh ${{ inputs.single }}

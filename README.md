@@ -7,7 +7,7 @@ The .appwrite file should look like this:
 ```bash
 COMMAND="node ." # The command that starts your function
 FUNCID="612934711598e" # The id of your function
-CODE="./"
+CODE="./" # The directory that contains your code
 ```
 
 # Inputs
