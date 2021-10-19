@@ -1,13 +1,21 @@
 # Apppwrite-Deploy
 This action allows you to deploy your Appwrite functions using GitHub actions.
 
+# Setup
+To get started simply create a `.appwrite` file in each of your function folders or at the root if you only intend to deploy one function.
+The .appwrite file should look like this:
+```bash
+COMMAND="node ." # The command that starts your function
+FUNCID="612934711598e" # The id of your function
+CODE="./"
+```
+
 # Inputs
 
 - **endpoint** Your Appwrite endpoint
 - **project** The Appwrite project id
 - **key** The Appwrite API token
-- **function** The id of the function you want to deploy
-- **command** The command that starts your function
+- **single** `true` if you are deploying one function from your root directory; `false` if you are deploying multiple functions from multiple subdirectories (default: 'true')
 - **code** The directory containing your function (default: './')
 - **locale** The locale of the cli (default: 'en-US')
 
@@ -30,6 +38,4 @@ jobs:
           endpoint: '[ Your Appwrite endpoint ]'
           project: '[ The id of your Appwrite project ]'
           key: '[ Your Appwrite API Token ]'
-          function: '[ The id of the function you are deploying ]'
-          command: 'node index.js'
 ```
