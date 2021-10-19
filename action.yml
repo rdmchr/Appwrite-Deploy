@@ -39,4 +39,4 @@ runs:
       run: chmod +x ${{ github.action_path }}/deploy-function.sh
     - name: Deploy function
       shell: bash
-      run: ${{ github.action_path }}/deploy-function.sh ${{ inputs.single }}
+      run: sudo bash ${{ github.action_path }}/deploy-function.sh ${{ inputs.single }}
