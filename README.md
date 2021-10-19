@@ -29,9 +29,11 @@ on:
      - master
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the code
+          uses: actions/checkout@v2
       - name: Deploy my function to Appwrite
         uses: rdmchr/Appwrite-Deploy@v0.1
         with:
