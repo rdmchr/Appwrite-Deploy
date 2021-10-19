@@ -34,6 +34,9 @@ runs:
           --project='${{ inputs.project }}' \
           --key='${{ inputs.key }}'
         appwrite version
+    - name: chmod script
+      shell: bash
+      run: chmod +x ${{ github.action_path }}/deploy-function.sh
     - name: Deploy function
       shell: bash
       run: ${{ github.action_path }}/deploy-function.sh ${{ inputs.single }}
